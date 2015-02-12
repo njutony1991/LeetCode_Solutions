@@ -1,4 +1,4 @@
-package Tree_Sum;
+package Three_Sum;
 import java.util.*;
 public class Solution{
 	class Triplets{

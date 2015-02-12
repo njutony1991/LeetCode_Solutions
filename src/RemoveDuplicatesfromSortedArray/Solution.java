@@ -2,38 +2,18 @@ package RemoveDuplicatesfromSortedArray;
 
 
 public class Solution {
-    private int move(int[]A,int from,int shift,int len){
-        for(int i=from;i<len;i++){
-            A[i-shift] = A[i];
-        }
-        return len-shift;
-    }
+
     public int removeDuplicates(int[] A) {
-        if(A.length==0)
-            return 0;
-        if(A.length==1)
-            return 1;
-        int shift=0;
-        int c = A[0];
-        int len = A.length;
-        for(int j=1;j<len;j++){
-            if(A[j]==c)
-                shift++;
-            else {
-                len = move(A,j,shift,len);
-                j = j-shift;
-                shift = 0;
-                c = A[j];
+        if(A.length==0) return 0;
+        if(A.length==1) return 1;
+        int top = 0;
+        for(int i=1;i<A.length;i++){
+            if(A[i]!=A[top]){
+                top++;
+                A[top]=A[i];
             }
         }
-        int lastrepeat = 0;
-        for(int i=len-1;i>=1&&A[i]==A[i-1];i--){
-            lastrepeat++;
-        }
-       // for(int i=0;i<len-lastrepeat;i++)
-       //     System.out.print(A[i]+" ");
-       // System.out.println("");
-        return len-lastrepeat;
+        return top+1;
     }
 
     public static void main(String[] args) {
